@@ -1,0 +1,16 @@
+only ggplot
+p <- ggplot(iris, aes(x = Species, y = Sepal.Length))
+geom_boxplot(
+    notch = TRUE,
+    notchwidth = 0.6,
+    outlier.color = "red",
+    outlier.shape = 16,
+    fill = "skyblue",
+    alpha = 0.7
+  ) 
+labs(
+    title = "Sepal Length Distribution by Iris Species",
+    subtitle = "Box Plot with Notches and Outlier Highlighting",
+    x = "Species",
+    y = "Sepal Length (cm)"
+  )
