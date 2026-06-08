@@ -1,0 +1,28 @@
+ggplot only
+ggplot(mtcars, aes(x = as.factor(cyl), y = mpg)) +
+  geom_dotplot(
+    binaxis = "y",
+    stackdir = "center",
+    fill = "skyblue",
+    dotsize = 1
+  ) +
+  labs(
+    title = "Dot Plot of Mileage by Cylinder Groups",
+    x = "Number of Cylinders",
+    y = "Miles per Gallon (mpg)"
+  ) +
+  theme_minimal()
+
+ggplot(mtcars, aes(x = as.factor(cyl), y = mpg, fill = as.factor(cyl))) +
+  geom_dotplot(
+    binaxis = "y",
+    stackdir = "center",
+    dotsize = 1
+  ) +
+  labs(
+    title = "Grouped Dot Plot of Mileage",
+    x = "Number of Cylinders",
+    y = "Miles per Gallon (mpg)",
+    fill = "Cylinders"
+  ) +
+  theme_minimal()
