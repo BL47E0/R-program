@@ -1,0 +1,43 @@
+```{r}
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+```
+
+```{r}
+data(mtcars)
+```
+
+```{r}
+head(mtcars)
+tail(mtcars)
+```
+
+```{r}
+cor_matrix <- cor(mtcars)
+```
+
+```{r}
+cor_df <- as.data.frame(
+  as.table(cor_matrix)
+)
+names(cor_df)
+```
+
+```{r}
+ggplot(cor_df, aes(x=Var1, y=Var2, fill=Freq)) +
+  geom_tile(color="white") +
+  scale_fill_gradient2(low="blue", mid="white", high="red", midpoint=0, limits=c(-1,1)) +
+  geom_text(aes(label=round(Freq,2)), size=3) +
+  labs(
+    title="Correlation matrix of mtcars",
+    x="", y=""
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x=element_text(
+      angle=45, hjust=1
+    )
+  )
+```
+
