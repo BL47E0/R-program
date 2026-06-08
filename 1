@@ -1,0 +1,47 @@
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+```
+
+```{r}
+data<-mtcars
+```
+
+```{r}
+head(data)
+tail(data)
+str(data)
+names(data)
+dim(data)
+summary(data)
+```
+
+```{r}
+data$cyl <- as.factor(data$cyl)
+```
+
+```{r}
+summary_data <- data %>%
+  group_by(cyl) %>%
+  summarise(
+    avg_mpg=mean(mpg),
+    .groups="drop"
+  )
+```
+
+```{r}
+ggplot(summary_data, aes(x=cyl, y=avg_mpg, fill=cyl)) +
+  geom_bar(stat="identity") +
+  labs(
+    title="Average mog by cylinder count",
+    x="Cylinder count",
+    y="Average mpg"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position="top"
+  )
+```
+
