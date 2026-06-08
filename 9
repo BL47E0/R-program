@@ -1,0 +1,7 @@
+only ggplot
+p <- ggplot(iris, aes(x = Sepal.Length)) 
+  geom_histogram(binwidth = 0.3, fill = "skyblue", color ="black") 
+  facet_wrap(~ Species) 
+  labs(title = "Distribution of Sepal Length by Species",
+       x = "Sepal Length (cm)",
+       y = "Frequency")
