@@ -1,0 +1,13 @@
+only ggplot, table of species
+```{r}
+ggplot(data, aes(x=Species, y=Sepal.Width, fill=Species))+
+  geom_violin() +
+  labs(
+    title="Violin plot of Sepal Width",
+    x="Species",
+    y="Sepal Length",
+    fill="Species"
+  ) +
+  theme_minimal()
+```
+same for all 4
