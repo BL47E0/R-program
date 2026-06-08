@@ -1,0 +1,38 @@
+ggplot2, dplyr tidyr
+# Create a monthly date sequence that matches AirPassengers length
+date_seq <- seq(
+  as.Date("1949-01-01"),
+  by = "month",
+  length.out = length(AirPassengers)
+)
+
+# Convert the time-series object into a dataframe for ggplot2
+data <- data.frame(
+  Date = date_seq,
+  Passengers = as.numeric(AirPassengers),
+  Year = as.factor(format(date_seq, "%Y"))
+)
+
+# Display first few rows
+head(data, n=20)
+plot_time_series <- function(data, x_col, y_col, group_col, title = "Air Passenger Trends") {
+  ggplot(
+    data,
+    aes_string(
+      x = x_col,
+      y = y_col,
+      color = group_col,
+      group = group_col
+    )
+  ) +
+    geom_line(size = 1.2) +
+    geom_point(size = 2) +
+    labs(
+      title = title,
+      x = "Date",
+      y = "Number of Passengers",
+      color = "Year"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "top")
+}
